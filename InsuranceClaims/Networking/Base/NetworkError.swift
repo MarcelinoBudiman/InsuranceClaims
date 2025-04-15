@@ -14,7 +14,6 @@ public enum NetworkError: String, Error{
     case failed
     case noData
     case generic
-    case alreadyUse = "Subcription Not Found"
     case noInternet = "No Internet"
     case unableToDecode = "The server returned data in an unexpected format. Try updating the app."
     case invalidResponse = "Invalid response"

@@ -96,8 +96,6 @@ class NetworkSessionClient<Endpoint: EndpointType>: NetworkClient{
             return .success
         case 401...499:
             return .failure(NetworkError.authenticationError)
-        case 500:
-            return .failure(NetworkError.alreadyUse)
         case 501...599 :
             return .failure(NetworkError.badRequest)
         case 600:
