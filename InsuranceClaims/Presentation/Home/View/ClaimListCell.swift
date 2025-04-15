@@ -23,6 +23,7 @@ struct ClaimListCell: View {
                     .font(.headline)
                 Text(description)
                     .font(.subheadline)
+                    .lineLimit(2)
             }
            
             
