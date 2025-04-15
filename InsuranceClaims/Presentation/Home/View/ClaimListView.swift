@@ -17,6 +17,7 @@ struct ClaimListView: View {
                 if vm.isLoading {
                     ProgressView()
                 } else {
+                    
                     List {
                         ForEach(vm.filteredClaimList, id: \.self) { claimData in
                             NavigationLink(value: claimData) {
@@ -29,7 +30,7 @@ struct ClaimListView: View {
             }
             .navigationTitle("Claim List")
             .navigationDestination(for: ClaimPost.self) { claimData in
-                
+                ClaimDetailView(claimData: claimData)
             }
             .searchable(text: $vm.searchText)
             
