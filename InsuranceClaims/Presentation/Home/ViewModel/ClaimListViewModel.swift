@@ -22,11 +22,10 @@ class ClaimListViewModel: ObservableObject {
         }
     }
     
-    @Published var errorMessage: String = ""
-    
     @Published var searchText: String = ""
     
     @Published var isLoading: Bool = false
+    @Published var errorToast: FancyToast?
     
     @MainActor
     func getAllClaimList() async {
@@ -41,7 +40,7 @@ class ClaimListViewModel: ObservableObject {
             
         case .failure(let failure):
             self.isLoading = false
-            errorMessage = failure.rawValue
+            errorToast = FancyToast(type: .error, title: "We're sorry, Something went wrong :(", message: failure.rawValue, duration: 5)
         }
     }
     

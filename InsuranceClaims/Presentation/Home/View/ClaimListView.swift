@@ -39,6 +39,7 @@ struct ClaimListView: View {
             .searchable(text: $vm.searchText)
             
         }
+        .toastView(toast: $vm.errorToast)
         .task {
             await vm.getAllClaimList()
         }
