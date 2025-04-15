@@ -13,28 +13,42 @@ struct ClaimDetailView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading) {
-            Text(claimData.title)
-                .font(.title)
-                .bold()
+        HStack {
+            Spacer()
+                .frame(width: K.deviceWidth * 0.02)
             
-            HStack {
+            VStack(alignment: .leading) {
+                Text(claimData.title)
+                    .font(.title)
+                    .bold()
                 
-                Text("Client \(claimData.userID)")
-                    .font(.title3)
+                Spacer()
+                    .frame(height: K.deviceHeight * 0.003)
+                
+                HStack {
+                    
+                    Text("Client \(claimData.userID)")
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Text("Claim No. \(claimData.id)")
+                        .font(.title3)
+                    
+                }
+                
+                Spacer()
+                    .frame(height: K.deviceHeight * 0.008)
+                
+                Text(claimData.body)
+                    .font(.subheadline)
                 
                 Spacer()
                 
-                Text("Claim No. \(claimData.id)")
-                    .font(.title3)
-                
             }
             
-            Text(claimData.body)
-                .font(.subheadline)
-            
             Spacer()
-            
+                .frame(width: K.deviceWidth * 0.02)
         }
         
     }

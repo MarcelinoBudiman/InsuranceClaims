@@ -18,13 +18,17 @@ struct ClaimListView: View {
                     ProgressView()
                 } else {
                     
-                    List {
-                        ForEach(vm.filteredClaimList, id: \.self) { claimData in
-                            NavigationLink(value: claimData) {
-                                ClaimListCell(title: claimData.title, description: claimData.body, userId: claimData.userID, claimId: claimData.id)
-                            }
+                    List(vm.filteredClaimList, id: \.self) { claimData in
+             
+                        ZStack {
+                            ClaimListCell(title: claimData.title, description: claimData.body, userId: claimData.userID, claimId: claimData.id)
+                            
+                            NavigationLink(destination: ClaimDetailView(claimData: claimData),
+                            label: {}).opacity(0)
                         }
+  
                     }
+   
                     
                 }
             }

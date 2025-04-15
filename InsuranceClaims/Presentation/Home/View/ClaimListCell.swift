@@ -15,29 +15,36 @@ struct ClaimListCell: View {
     var claimId: Int
     
     var body: some View {
-        HStack {
-            Spacer()
+        
+        
+        VStack(alignment: .leading) {
             
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.headline)
-                Text(description)
-                    .font(.subheadline)
-                    .lineLimit(2)
-            }
-           
+            Text(title)
+                .font(.headline)
             
             Spacer()
+                .frame(height: K.deviceHeight * 0.003)
             
-            VStack(alignment: .trailing) {
+            HStack() {
                 Text("Client \(userId)")
-                    .font(.caption)
+
                 Text("Claim No. \(claimId)")
-                    .font(.caption)
+                    
             }
+            .font(.caption)
+            .fontWeight(.medium)
             
             Spacer()
+                .frame(height: K.deviceHeight * 0.003)
+            
+            Text(description)
+                .font(.subheadline)
+                .fontWeight(.light)
+                .lineLimit(2)
+            
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+
     }
 }
 
