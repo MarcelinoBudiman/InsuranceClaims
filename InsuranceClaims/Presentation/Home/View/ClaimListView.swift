@@ -9,7 +9,14 @@ import SwiftUI
 
 struct ClaimListView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                ClaimListCell(title: "Claim 001", description: "Claim for dental", userId: 1, claimId: 1)
+                ClaimListCell(title: "Claim 002", description: "Claim for dental", userId: 1, claimId: 2)
+                ClaimListCell(title: "Claim 003", description: "Claim for dental", userId: 1, claimId: 2)
+            }
+            .navigationTitle("Claim List")
+        }
     }
 }
 
