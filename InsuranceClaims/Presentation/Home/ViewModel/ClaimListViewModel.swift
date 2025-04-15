@@ -12,11 +12,6 @@ class ClaimListViewModel: ObservableObject {
     
     let claimListNetworkClient = NetworkSessionClient<ClaimListEndpoint>()
     
-    @Published var claims: [ClaimPost] = [ClaimPost(userID: 1, id: 1, title: "Claim 001", body: "Claim for dental operation"),
-                                          ClaimPost(userID: 1, id: 2, title: "Claim 005", body: "Claim for dental operation"),
-                                          ClaimPost(userID: 2, id: 1, title: "Claim 0046", body: "Claim for dental operation"),
-                                          ClaimPost(userID: 2, id: 2, title: "Claim 0098", body: "Claim for dental operation")]
-    
     @Published var claimList: [ClaimPost] = []
     
     var filteredClaimList: [ClaimPost] {
