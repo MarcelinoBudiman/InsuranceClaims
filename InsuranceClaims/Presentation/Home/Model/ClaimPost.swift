@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClaimPost: Codable {
+struct ClaimPost: Codable, Hashable {
     let userID, id: Int
     let title, body: String
 

@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ClaimListView: View {
+    
+    @StateObject var vm = ClaimListViewModel()
+    
     var body: some View {
         NavigationStack {
             List {
-                ClaimListCell(title: "Claim 001", description: "Claim for dental", userId: 1, claimId: 1)
-                ClaimListCell(title: "Claim 002", description: "Claim for dental", userId: 1, claimId: 2)
-                ClaimListCell(title: "Claim 003", description: "Claim for dental", userId: 1, claimId: 2)
+                ForEach(vm.claims, id: \.self) { claimData in
+                    ClaimListCell(title: claimData.title, description: claimData.body, userId: claimData.userID, claimId: claimData.id)
+                }
             }
             .navigationTitle("Claim List")
         }
