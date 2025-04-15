@@ -18,7 +18,19 @@ class ClaimListViewModel: ObservableObject {
                                           ClaimPost(userID: 2, id: 2, title: "Claim 0098", body: "Claim for dental operation")]
     
     @Published var claimList: [ClaimPost] = []
+    
+    var filteredClaimList: [ClaimPost] {
+        if searchText.isEmpty {
+            claimList
+        } else {
+            claimList.filter { $0.title.localizedStandardContains(searchText) }
+        }
+    }
+    
     @Published var errorMessage: String = ""
+    
+    @Published var searchText: String = ""
+    
     @Published var isLoading: Bool = false
     
     @MainActor

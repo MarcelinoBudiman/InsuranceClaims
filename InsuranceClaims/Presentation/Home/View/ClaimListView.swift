@@ -13,12 +13,29 @@ struct ClaimListView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(vm.claims, id: \.self) { claimData in
-                    ClaimListCell(title: claimData.title, description: claimData.body, userId: claimData.userID, claimId: claimData.id)
+            ZStack {
+                if vm.isLoading {
+                    ProgressView()
+                } else {
+                    List {
+                        ForEach(vm.filteredClaimList, id: \.self) { claimData in
+                            NavigationLink(value: claimData) {
+                                ClaimListCell(title: claimData.title, description: claimData.body, userId: claimData.userID, claimId: claimData.id)
+                            }
+                        }
+                    }
+                    
                 }
             }
             .navigationTitle("Claim List")
+            .navigationDestination(for: ClaimPost.self) { claimData in
+                
+            }
+            .searchable(text: $vm.searchText)
+            
+        }
+        .task {
+            await vm.getAllClaimList()
         }
     }
 }
